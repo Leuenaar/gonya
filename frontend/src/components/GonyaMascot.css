@@ -1,0 +1,548 @@
+/* ── Base wrapper ── */
+.gonya-mascot {
+  display: inline-block;
+  position: relative;
+  user-select: none;
+}
+
+/* ── Default: hide sleep-only elements ── */
+.gm-sleep-line-left,
+.gm-sleep-line-right,
+.gm-zzz,
+.gm-grumble {
+  display: none;
+}
+
+/* ─────────────────────────────────────────
+   STATE: IDLE
+───────────────────────────────────────── */
+.gonya-state-idle .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-breathe 3.5s ease-in-out infinite;
+}
+.gonya-state-idle .gm-soul {
+  animation: gm-soul-pulse 3.5s ease-in-out infinite;
+}
+.gonya-state-idle .gm-eye-left {
+  transform-origin: 395px 310px;
+  animation: gm-blink 4s ease-in-out infinite;
+}
+.gonya-state-idle .gm-eye-right {
+  transform-origin: 530px 325px;
+  animation: gm-blink 4s ease-in-out 0.06s infinite;
+}
+.gonya-state-idle .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-wiggle-l 3s ease-in-out infinite;
+}
+.gonya-state-idle .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-wiggle-r 3s ease-in-out infinite;
+}
+.gonya-state-idle .gm-smile {
+  transform-origin: 480px 400px;
+  animation: gm-smile-bounce 3.5s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────
+   STATE: SLEEPING
+   — eyes fully hidden, replaced with flat lines
+   — mouth gone (scaleY 0)
+   — Zzz floats up
+───────────────────────────────────────── */
+.gonya-state-sleeping .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-breathe-slow 5s ease-in-out infinite;
+}
+.gonya-state-sleeping .gm-soul {
+  animation: gm-soul-pulse-slow 5s ease-in-out infinite;
+}
+
+/* Hide ALL eye circles */
+.gonya-state-sleeping .gm-eye-left circle,
+.gonya-state-sleeping .gm-eye-right circle {
+  display: none;
+}
+
+/* Show sleep lines */
+.gonya-state-sleeping .gm-sleep-line-left,
+.gonya-state-sleeping .gm-sleep-line-right {
+  display: block;
+  animation: gm-sleep-line-breathe 5s ease-in-out infinite;
+}
+
+/* Hide smile entirely */
+.gonya-state-sleeping .gm-smile {
+  transform-origin: 480px 400px;
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+/* Show Zzz */
+.gonya-state-sleeping .gm-zzz {
+  display: block;
+  animation: gm-zzz-float 2.5s ease-in-out infinite;
+}
+
+.gonya-state-sleeping .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-wiggle-l 6s ease-in-out infinite;
+}
+.gonya-state-sleeping .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-wiggle-r 6s ease-in-out 0.5s infinite;
+}
+
+/* ─────────────────────────────────────────
+   STATE: WALKING
+───────────────────────────────────────── */
+.gonya-state-walking .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-walk-bob 0.6s ease-in-out infinite;
+}
+.gonya-state-walking .gm-soul {
+  animation: gm-soul-pulse 0.6s ease-in-out infinite;
+}
+.gonya-state-walking .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-walk-leg-l 0.6s ease-in-out infinite;
+}
+.gonya-state-walking .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-walk-leg-r 0.6s ease-in-out 0.3s infinite;
+}
+.gonya-state-walking .gm-eye-left {
+  transform-origin: 395px 310px;
+  animation: gm-blink 3s ease-in-out infinite;
+}
+.gonya-state-walking .gm-eye-right {
+  transform-origin: 530px 325px;
+  animation: gm-blink 3s ease-in-out 0.08s infinite;
+}
+
+/* ─────────────────────────────────────────
+   STATE: HAPPY
+───────────────────────────────────────── */
+.gonya-state-happy .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-happy-bounce 0.5s ease-in-out infinite;
+}
+.gonya-state-happy .gm-soul {
+  animation: gm-soul-happy 0.5s ease-in-out infinite;
+}
+.gonya-state-happy .gm-eye-left {
+  transform-origin: 395px 310px;
+  animation: gm-happy-eye 0.5s ease-in-out infinite;
+}
+.gonya-state-happy .gm-eye-right {
+  transform-origin: 530px 325px;
+  animation: gm-happy-eye 0.5s ease-in-out 0.05s infinite;
+}
+.gonya-state-happy .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-happy-wiggle-l 0.5s ease-in-out infinite;
+}
+.gonya-state-happy .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-happy-wiggle-r 0.5s ease-in-out infinite;
+}
+.gonya-state-happy .gm-smile {
+  transform-origin: 480px 400px;
+  animation: gm-smile-big 0.5s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────
+   STATE: WORRIED
+───────────────────────────────────────── */
+.gonya-state-worried .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-worry-sway 2.5s ease-in-out infinite;
+}
+.gonya-state-worried .gm-soul {
+  animation: gm-soul-worry 2.5s ease-in-out infinite;
+}
+.gonya-state-worried .gm-eye-left {
+  transform-origin: 395px 310px;
+  animation: gm-worry-eye 2.5s ease-in-out infinite;
+}
+.gonya-state-worried .gm-eye-right {
+  transform-origin: 530px 325px;
+  animation: gm-worry-eye 2.5s ease-in-out 0.1s infinite;
+}
+.gonya-state-worried .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-droop-l 2.5s ease-in-out infinite;
+}
+.gonya-state-worried .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-droop-r 2.5s ease-in-out infinite;
+}
+.gonya-state-worried .gm-smile {
+  transform-origin: 480px 400px;
+  animation: gm-frown 2.5s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────
+   STATE: SAD
+───────────────────────────────────────── */
+.gonya-state-sad .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-sad-compress 5s ease-in-out infinite;
+}
+.gonya-state-sad .gm-soul {
+  animation: gm-soul-sad 5s ease-in-out infinite;
+}
+.gonya-state-sad .gm-eye-left {
+  transform-origin: 395px 310px;
+  animation: gm-sad-eye 5s ease-in-out infinite;
+}
+.gonya-state-sad .gm-eye-right {
+  transform-origin: 530px 325px;
+  animation: gm-sad-eye 5s ease-in-out 0.2s infinite;
+}
+.gonya-state-sad .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-droop-l-heavy 5s ease-in-out infinite;
+}
+.gonya-state-sad .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-droop-r-heavy 5s ease-in-out 0.3s infinite;
+}
+.gonya-state-sad .gm-smile {
+  transform-origin: 480px 400px;
+  animation: gm-frown-deep 5s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────── */
+
+@keyframes gm-breathe {
+  0%, 100% { transform: scaleY(1);     }
+  50%       { transform: scaleY(1.025); }
+}
+@keyframes gm-breathe-slow {
+  0%, 100% { transform: scaleY(1);     }
+  50%       { transform: scaleY(1.015); }
+}
+@keyframes gm-soul-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.5;  }
+}
+@keyframes gm-soul-pulse-slow {
+  0%, 100% { opacity: 0.2;  }
+  50%       { opacity: 0.35; }
+}
+@keyframes gm-soul-happy {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.7; }
+}
+@keyframes gm-soul-worry {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 0.3; }
+}
+@keyframes gm-soul-sad {
+  0%, 100% { opacity: 0.1;  }
+  50%       { opacity: 0.15; }
+}
+@keyframes gm-blink {
+  0%, 88%, 95%, 100% { transform: scaleY(1);    }
+  91%                 { transform: scaleY(0.08); }
+}
+@keyframes gm-wiggle-l {
+  0%, 100% { transform: rotate(0deg);  }
+  40%       { transform: rotate(-5deg); }
+  70%       { transform: rotate(3deg);  }
+}
+@keyframes gm-wiggle-r {
+  0%, 100% { transform: rotate(0deg); }
+  40%       { transform: rotate(5deg); }
+  70%       { transform: rotate(-3deg); }
+}
+@keyframes gm-smile-bounce {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(2px); }
+}
+@keyframes gm-smile-big {
+  0%, 100% { transform: scaleX(1) scaleY(1);       }
+  50%       { transform: scaleX(1.15) scaleY(1.2); }
+}
+@keyframes gm-zzz-float {
+  0%   { transform: translateY(0px);   opacity: 1; }
+  100% { transform: translateY(-30px); opacity: 0; }
+}
+@keyframes gm-sleep-line-breathe {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1;   }
+}
+@keyframes gm-walk-bob {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes gm-walk-leg-l {
+  0%, 100% { transform: rotate(-20deg); }
+  50%       { transform: rotate(20deg);  }
+}
+@keyframes gm-walk-leg-r {
+  0%, 100% { transform: rotate(20deg);  }
+  50%       { transform: rotate(-20deg); }
+}
+@keyframes gm-happy-bounce {
+  0%, 100% { transform: translateY(0px) scale(1);       }
+  50%       { transform: translateY(-12px) scale(1.05); }
+}
+@keyframes gm-happy-eye {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.12); }
+}
+@keyframes gm-happy-wiggle-l {
+  0%, 100% { transform: rotate(-15deg); }
+  50%       { transform: rotate(15deg);  }
+}
+@keyframes gm-happy-wiggle-r {
+  0%, 100% { transform: rotate(15deg);  }
+  50%       { transform: rotate(-15deg); }
+}
+@keyframes gm-worry-sway {
+  0%, 100% { transform: rotate(0deg);   }
+  30%       { transform: rotate(-3deg); }
+  70%       { transform: rotate(3deg);  }
+}
+@keyframes gm-worry-eye {
+  0%, 100% { transform: scaleY(0.75); }
+  50%       { transform: scaleY(0.6); }
+}
+@keyframes gm-sad-compress {
+  0%, 100% { transform: scaleY(0.95) translateY(4px); }
+  50%       { transform: scaleY(0.92) translateY(6px); }
+}
+@keyframes gm-sad-eye {
+  0%, 100% { transform: scaleY(0.28); }
+  50%       { transform: scaleY(0.22); }
+}
+@keyframes gm-droop-l {
+  0%, 100% { transform: rotate(8deg);  }
+  50%       { transform: rotate(12deg); }
+}
+@keyframes gm-droop-r {
+  0%, 100% { transform: rotate(-8deg);  }
+  50%       { transform: rotate(-12deg); }
+}
+@keyframes gm-droop-l-heavy {
+  0%, 100% { transform: rotate(18deg); }
+  50%       { transform: rotate(20deg); }
+}
+@keyframes gm-droop-r-heavy {
+  0%, 100% { transform: rotate(-18deg); }
+  50%       { transform: rotate(-20deg); }
+}
+@keyframes gm-frown {
+  0%, 100% { transform: scaleY(-0.6) translateY(-6px); }
+  50%       { transform: scaleY(-0.7) translateY(-8px); }
+}
+@keyframes gm-frown-deep {
+  0%, 100% { transform: scaleY(-0.8) translateY(-10px); }
+  50%       { transform: scaleY(-0.9) translateY(-12px); }
+}
+
+/* ── Floating position (left column) ── */
+.gonya-float {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%) scale(1) translateY(0px);
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* ── Float hide/warp states ── */
+.gonya-float-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) scale(0.2) translateY(20px);
+}
+
+.gonya-float-warp {
+  animation: gonya-warp-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes gonya-warp-in {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0.1) translateY(50px);  }
+  50%  { opacity: 1; transform: translateX(-50%) scale(1.2) translateY(-12px); }
+  75%  { transform: translateX(-50%) scale(0.95) translateY(4px); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1) translateY(0px);    }
+}
+
+
+/* ─────────────────────────────────────────
+   STATE: FOCUSED
+   eyes squint determined, body still, tendrils tucked
+───────────────────────────────────────── */
+.gonya-state-focused .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-focused-still 4s ease-in-out infinite;
+}
+.gonya-state-focused .gm-soul {
+  animation: gm-soul-focused 4s ease-in-out infinite;
+}
+.gonya-state-focused .gm-eye-left {
+  transform-origin: 395px 310px;
+  animation: gm-focused-eye 4s ease-in-out infinite;
+}
+.gonya-state-focused .gm-eye-right {
+  transform-origin: 530px 325px;
+  animation: gm-focused-eye 4s ease-in-out 0.1s infinite;
+}
+.gonya-state-focused .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-focused-tendril-l 4s ease-in-out infinite;
+}
+.gonya-state-focused .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-focused-tendril-r 4s ease-in-out infinite;
+}
+.gonya-state-focused .gm-smile {
+  transform-origin: 480px 400px;
+  transform: scaleY(0.4) translateY(-4px);
+  opacity: 0.6;
+}
+
+@keyframes gm-focused-still {
+  0%, 100% { transform: scaleY(1);     }
+  50%       { transform: scaleY(1.01); }
+}
+@keyframes gm-soul-focused {
+  0%, 100% { opacity: 0.15; }
+  50%       { opacity: 0.25; }
+}
+@keyframes gm-focused-eye {
+  0%, 100% { transform: scaleY(0.45); }
+  50%       { transform: scaleY(0.4);  }
+}
+@keyframes gm-focused-tendril-l {
+  0%, 100% { transform: rotate(12deg); }
+  50%       { transform: rotate(10deg); }
+}
+@keyframes gm-focused-tendril-r {
+  0%, 100% { transform: rotate(-12deg); }
+  50%       { transform: rotate(-10deg); }
+}
+
+/* ─────────────────────────────────────────
+   STATE: MUTTERING
+   the "talking" ambient emotion — a quick
+   chattery grumble. Every loop here is
+   millisecond-fast (150-350ms), never the slow
+   2.5-5s breathing cadence used elsewhere —
+   this should read as a fast jitter, not a sway.
+───────────────────────────────────────── */
+.gonya-state-muttering .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-mutter-shake 0.18s steps(2, end) infinite;
+}
+.gonya-state-muttering .gm-soul {
+  animation: gm-soul-mutter 0.4s ease-in-out infinite;
+}
+.gonya-state-muttering .gm-eye-left {
+  transform-origin: 395px 310px;
+  animation: gm-mutter-eye 0.5s ease-in-out infinite;
+}
+.gonya-state-muttering .gm-eye-right {
+  transform-origin: 530px 325px;
+  animation: gm-mutter-eye 0.5s ease-in-out 0.05s infinite;
+}
+.gonya-state-muttering .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-mutter-tendril-l 0.3s ease-in-out infinite;
+}
+.gonya-state-muttering .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-mutter-tendril-r 0.3s ease-in-out infinite;
+}
+.gonya-state-muttering .gm-smile {
+  transform-origin: 480px 400px;
+  animation: gm-mutter-mouth 0.15s steps(3, end) infinite;
+}
+.gonya-state-muttering .gm-grumble {
+  display: block;
+  animation: gm-grumble-pop 0.35s steps(3, end) infinite;
+}
+
+@keyframes gm-mutter-shake {
+  0%, 100% { transform: rotate(-1.8deg); }
+  50%       { transform: rotate(1.8deg); }
+}
+@keyframes gm-soul-mutter {
+  0%, 100% { opacity: 0.22; }
+  50%       { opacity: 0.4;  }
+}
+@keyframes gm-mutter-eye {
+  0%, 100% { transform: scaleY(0.55); }
+  50%       { transform: scaleY(0.38); }
+}
+@keyframes gm-mutter-tendril-l {
+  0%, 100% { transform: rotate(-9deg); }
+  50%       { transform: rotate(9deg);  }
+}
+@keyframes gm-mutter-tendril-r {
+  0%, 100% { transform: rotate(9deg);  }
+  50%       { transform: rotate(-9deg); }
+}
+@keyframes gm-mutter-mouth {
+  0%   { transform: scaleX(1)    scaleY(1);   }
+  33%  { transform: scaleX(0.65) scaleY(1.35); }
+  66%  { transform: scaleX(1.2)  scaleY(0.55); }
+  100% { transform: scaleX(1)    scaleY(1);   }
+}
+@keyframes gm-grumble-pop {
+  0%, 100% { opacity: 0.35; transform: translateY(0px);  }
+  50%       { opacity: 1;    transform: translateY(-3px); }
+}
+
+/* ─────────────────────────────────────────
+   STATE: PEEKING
+   eyes scan left-right, body still
+───────────────────────────────────────── */
+.gonya-state-peeking .gm-body {
+  transform-origin: 420px 310px;
+  animation: gm-breathe 3.5s ease-in-out infinite;
+}
+.gonya-state-peeking .gm-soul {
+  animation: gm-soul-pulse 3.5s ease-in-out infinite;
+}
+.gonya-state-peeking .gm-eye-left {
+  transform-origin: 395px 310px;
+  animation: gm-peek-eye-l 1.8s ease-in-out infinite;
+}
+.gonya-state-peeking .gm-eye-right {
+  transform-origin: 530px 325px;
+  animation: gm-peek-eye-r 1.8s ease-in-out infinite;
+}
+.gonya-state-peeking .gm-tendril-left {
+  transform-origin: 330px 470px;
+  animation: gm-wiggle-l 3s ease-in-out infinite;
+}
+.gonya-state-peeking .gm-tendril-right {
+  transform-origin: 520px 470px;
+  animation: gm-wiggle-r 3s ease-in-out infinite;
+}
+.gonya-state-peeking .gm-smile {
+  transform-origin: 480px 400px;
+  animation: gm-smile-bounce 3.5s ease-in-out infinite;
+}
+
+@keyframes gm-peek-eye-l {
+  0%        { transform: translateX(0px);   }
+  20%       { transform: translateX(-12px); }
+  50%       { transform: translateX(14px);  }
+  80%       { transform: translateX(-10px); }
+  100%      { transform: translateX(0px);   }
+}
+@keyframes gm-peek-eye-r {
+  0%        { transform: translateX(0px);   }
+  20%       { transform: translateX(-14px); }
+  50%       { transform: translateX(12px);  }
+  80%       { transform: translateX(-8px);  }
+  100%      { transform: translateX(0px);   }
+}

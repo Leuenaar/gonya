@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="amberGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE2B2" />
+      <stop offset="100%" stop-color="#FFB347" />
+    </linearGradient>
+    <linearGradient id="tealDark" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1A252F" />
+      <stop offset="100%" stop-color="#4B657D" />
+    </linearGradient>
+    <filter id="coreGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <path d="M 250,90 L 410,370 L 90,370 Z" fill="none" stroke="url(#tealDark)" stroke-width="26" stroke-linejoin="round" />
+  <path d="M 250,150 L 340,310 L 160,310 Z" fill="none" stroke="url(#amberGlow)" stroke-width="8" stroke-linejoin="round" filter="url(#coreGlow)" />
+  <circle cx="250" cy="90" r="16" fill="#FFE2B2" filter="url(#coreGlow)"/>
+  <circle cx="410" cy="370" r="16" fill="#FFE2B2" filter="url(#coreGlow)"/>
+  <circle cx="90" cy="370" r="16" fill="#FFE2B2" filter="url(#coreGlow)"/>
+  <circle cx="250" cy="270" r="22" fill="#FFB347" filter="url(#coreGlow)" />
+  <path d="M 250,270 L 250,150" fill="none" stroke="#4B657D" stroke-width="5" />
+  <path d="M 250,270 L 160,310" fill="none" stroke="#4B657D" stroke-width="5" />
+  <path d="M 250,270 L 340,310" fill="none" stroke="#4B657D" stroke-width="5" />
+</svg>

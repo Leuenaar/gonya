@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="150 90 520 520" width="100%" height="100%">
+  <defs>
+    <!-- Main Front Face Gradient -->
+    <linearGradient id="frontGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#64829E" />
+      <stop offset="100%" stop-color="#2C3E50" />
+    </linearGradient>
+
+    <!-- 3D Extrusion Side Gradient -->
+    <linearGradient id="sideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A4F65" />
+      <stop offset="100%" stop-color="#1C2836" />
+    </linearGradient>
+
+    <!-- Ambient Glow -->
+    <filter id="heavyGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="60" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Eye / Core Glow -->
+    <filter id="coreGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    /* Breathing — body gently scales up and down */
+    #gonya-body {
+      transform-origin: 420px 310px;
+      animation: gonya-breathe 3.5s ease-in-out infinite;
+    }
+    @keyframes gonya-breathe {
+      0%, 100% { transform: scaleY(1);   }
+      50%       { transform: scaleY(1.025); }
+    }
+
+    /* Blinking — left eye */
+    #gonya-eye-left {
+      transform-origin: 395px 310px;
+      animation: gonya-blink 4s ease-in-out infinite;
+    }
+    @keyframes gonya-blink {
+      0%, 88%, 95%, 100% { transform: scaleY(1);    }
+      91%                 { transform: scaleY(0.08); }
+    }
+
+    /* Blinking — right eye (slight offset) */
+    #gonya-eye-right {
+      transform-origin: 530px 325px;
+      animation: gonya-blink 4s ease-in-out 0.06s infinite;
+    }
+
+    /* Tendril wiggle */
+    #gonya-tendril-left {
+      animation: gonya-wiggle-l 3s ease-in-out infinite;
+      transform-origin: 330px 470px;
+    }
+    #gonya-tendril-right {
+      animation: gonya-wiggle-r 3s ease-in-out infinite;
+      transform-origin: 520px 470px;
+    }
+    @keyframes gonya-wiggle-l {
+      0%, 100% { transform: rotate(0deg);   }
+      40%       { transform: rotate(-5deg); }
+      70%       { transform: rotate(3deg);  }
+    }
+    @keyframes gonya-wiggle-r {
+      0%, 100% { transform: rotate(0deg);  }
+      40%       { transform: rotate(5deg); }
+      70%       { transform: rotate(-3deg); }
+    }
+
+    /* Soul glow pulse */
+    #gonya-soul {
+      animation: gonya-soul-pulse 3.5s ease-in-out infinite;
+    }
+    @keyframes gonya-soul-pulse {
+      0%, 100% { opacity: 0.35; r: 160; }
+      50%       { opacity: 0.5;  r: 175; }
+    }
+
+    /* Smile subtle bounce */
+    #gonya-smile-group {
+      transform-origin: 480px 400px;
+      animation: gonya-smile-bounce 3.5s ease-in-out infinite;
+    }
+    @keyframes gonya-smile-bounce {
+      0%, 100% { transform: translateY(0px);  }
+      50%       { transform: translateY(2px); }
+    }
+  </style>
+
+  <!-- Soul / Ambient Light -->
+  <circle id="gonya-soul" cx="420" cy="330" r="160" fill="#FFB347" opacity="0.35" filter="url(#heavyGlow)" />
+
+  <!-- Outer Tendrils (back layer) -->
+  <path d="M 280 400 C 180 480, 160 370, 220 350" fill="none" stroke="#253545" stroke-width="22" stroke-linecap="round" />
+  <path d="M 570 410 C 670 480, 680 380, 620 360" fill="none" stroke="#253545" stroke-width="22" stroke-linecap="round" />
+
+  <!-- Body group (breathing) -->
+  <g id="gonya-body">
+    <!-- 3D Extrusion -->
+    <path d="M 370 110 C 400 110, 420 125, 435 150 L 585 390 C 605 425, 580 460, 540 460 L 240 460 C 210 460, 190 435, 205 410 L 325 160 C 340 130, 360 110, 370 110 Z"
+          fill="url(#sideGrad)" />
+
+    <!-- Side Glow Slots -->
+    <path d="M 290 230 L 230 350" fill="none" stroke="#FFE2B2" stroke-width="16" stroke-linecap="round" filter="url(#coreGlow)" opacity="0.9" />
+    <path d="M 290 230 L 230 350" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" />
+    <path d="M 380 125 L 410 125" fill="none" stroke="#FFE2B2" stroke-width="10" stroke-linecap="round" filter="url(#coreGlow)" opacity="0.9" />
+
+    <!-- Main Front Face -->
+    <path d="M 400 130 C 430 130, 450 145, 465 170 L 615 410 C 635 445, 610 480, 570 480 L 270 480 C 240 480, 220 455, 235 430 L 355 180 C 370 150, 390 130, 400 130 Z"
+          fill="url(#frontGrad)" />
+
+    <!-- Bevel Highlight -->
+    <path d="M 400 138 C 425 138, 440 150, 452 173 L 598 410 C 613 438, 595 468, 563 468 L 277 468 C 250 468, 238 445, 248 425 L 366 186 C 378 160, 390 138, 400 138 Z"
+          fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.4" />
+  </g>
+
+  <!-- Inner Tendrils (front layer) -->
+  <g id="gonya-tendril-left">
+    <path d="M 330 470 C 280 550, 400 580, 410 500" fill="none" stroke="#32465C" stroke-width="20" stroke-linecap="round" />
+    <path d="M 330 470 C 280 550, 400 580, 410 500" fill="none" stroke="#64829E" stroke-width="3" stroke-linecap="round" opacity="0.5" transform="translate(-1,-3)" />
+  </g>
+  <g id="gonya-tendril-right">
+    <path d="M 520 470 C 560 550, 440 580, 430 500" fill="none" stroke="#32465C" stroke-width="20" stroke-linecap="round" />
+    <path d="M 520 470 C 560 550, 440 580, 430 500" fill="none" stroke="#64829E" stroke-width="3" stroke-linecap="round" opacity="0.5" transform="translate(1,-3)" />
+  </g>
+
+  <!-- Left Eye -->
+  <g id="gonya-eye-left">
+    <circle cx="395" cy="310" r="48" fill="#FFE2B2" filter="url(#coreGlow)" />
+    <circle cx="395" cy="310" r="38" fill="#FFF7E6" />
+  </g>
+
+  <!-- Right Eye -->
+  <g id="gonya-eye-right">
+    <circle cx="530" cy="325" r="32" fill="#FFE2B2" filter="url(#coreGlow)" />
+    <circle cx="530" cy="325" r="24" fill="#FFF7E6" />
+  </g>
+
+  <!-- Smile -->
+  <g id="gonya-smile-group">
+    <path d="M 455 390 Q 480 415 505 395" fill="none" stroke="#FFE2B2" stroke-width="11" stroke-linecap="round" filter="url(#coreGlow)" />
+    <path d="M 455 390 Q 480 415 505 395" fill="none" stroke="#FFF7E6" stroke-width="5" stroke-linecap="round" />
+  </g>
+
+</svg>

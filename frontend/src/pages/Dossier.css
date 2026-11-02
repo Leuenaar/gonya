@@ -1,0 +1,387 @@
+.dos-root {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+/* ── Sidebar ── */
+.dos-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dos-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.dos-sidebar-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+
+.dos-new-btn {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+.dos-new-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* ── Create form ── */
+.dos-create-form {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fade-in 0.15s ease;
+  flex-shrink: 0;
+}
+
+.dos-input {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 12px;
+  padding: 7px 10px;
+  outline: none;
+  font-family: var(--font-mono);
+  transition: border-color 0.15s;
+  width: 100%;
+}
+.dos-input:focus { border-color: var(--cyan-dim); }
+.dos-input::placeholder { color: var(--text-dim); }
+
+.dos-color-row {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.dos-color-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.dos-color-dot:hover { transform: scale(1.2); }
+.dos-color-dot.active { border-color: var(--text-primary); transform: scale(1.15); }
+
+.dos-create-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.dos-btn {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+.dos-btn-ghost {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.dos-btn-ghost:hover { border-color: var(--text-muted); color: var(--text-primary); }
+.dos-btn-primary {
+  background: none;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+}
+.dos-btn-primary:hover:not(:disabled) { background: rgba(0,229,255,0.07); }
+.dos-btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ── Dossier list ── */
+.dos-list { flex: 1; overflow-y: auto; }
+
+.dos-item {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+  position: relative;
+}
+.dos-item:hover  { background: var(--bg-hover); }
+.dos-item.active { background: rgba(0,229,255,0.04); }
+
+.dos-item-accent {
+  width: 3px;
+  flex-shrink: 0;
+}
+
+.dos-item-body {
+  flex: 1;
+  padding: 11px 12px;
+  min-width: 0;
+}
+
+.dos-item-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dos-item-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dos-item-meta {
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+.dos-item-del {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 12px;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+  line-height: 1;
+}
+.dos-item:hover .dos-item-del { opacity: 1; }
+.dos-item-del:hover { color: var(--red); }
+
+/* ── Empty states ── */
+.dos-empty {
+  padding: 20px 14px;
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ── Main panel ── */
+.dos-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.dos-empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  text-align: center;
+}
+
+.dos-empty-icon { font-size: 32px; color: var(--text-dim); opacity: 0.4; }
+
+.dos-empty-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dos-empty-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  max-width: 360px;
+  line-height: 1.7;
+}
+
+/* ── Dossier header ── */
+.dos-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.dos-header-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dos-header-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.dos-header-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.dos-header-meta {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+/* ── Tabs ── */
+.dos-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.dos-tab {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  transition: all 0.15s;
+  margin-bottom: -1px;
+}
+.dos-tab:hover { color: var(--text-muted); }
+.dos-tab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+
+/* ── Contents ── */
+.dos-contents {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Messages ── */
+.dos-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 82%;
+}
+
+.dos-msg-user   { align-self: flex-end; }
+.dos-msg-aksel,
+.dos-msg-vera   { align-self: flex-start; }
+
+.dos-msg-sender {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0 4px;
+}
+.dos-msg-aksel .dos-msg-sender { color: var(--aksel); }
+.dos-msg-vera  .dos-msg-sender { color: var(--vera); }
+.dos-msg-user  .dos-msg-sender { color: var(--text-dim); text-align: right; }
+
+.dos-msg-content {
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.dos-msg-aksel .dos-msg-content { background: rgba(245,158,11,0.04); border-left: 2px solid var(--aksel); }
+.dos-msg-vera  .dos-msg-content { background: rgba(167,139,250,0.04); border-left: 2px solid var(--vera); }
+.dos-msg-user  .dos-msg-content { background: var(--bg-surface); border-right: 2px solid rgba(255,255,255,0.12); }
+
+.dos-msg-time {
+  font-size: 10px;
+  color: var(--text-dim);
+  padding: 0 4px;
+  letter-spacing: 0.04em;
+}
+.dos-msg-user .dos-msg-time { text-align: right; }
+
+/* ── Files ── */
+.dos-file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.dos-file-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s;
+}
+.dos-file-card:hover { border-color: var(--border-strong); }
+
+.dos-file-icon { font-size: 24px; line-height: 1; }
+
+.dos-file-name {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dos-file-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.dos-file-expiry { color: var(--amber); }

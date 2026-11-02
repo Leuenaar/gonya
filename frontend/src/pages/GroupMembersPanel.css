@@ -1,0 +1,247 @@
+.gmp-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 90;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gmp-panel {
+  width: 340px;
+  max-width: 90vw;
+  height: 100%;
+  background: var(--bg-panel);
+  border-left: 1px solid var(--border-strong);
+  display: flex;
+  flex-direction: column;
+  animation: gmp-slide-in 0.18s ease;
+}
+
+@keyframes gmp-slide-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.gmp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.gmp-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--cyan);
+  opacity: 0.7;
+}
+
+.gmp-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+}
+.gmp-close:hover { color: var(--text-primary); }
+
+.gmp-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px;
+}
+
+.gmp-loading { font-size: 12px; color: var(--text-dim); }
+
+.gmp-member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.gmp-member-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.gmp-member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.gmp-member-name {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.gmp-member-username {
+  font-size: 10px;
+  color: var(--cyan-dim);
+  font-family: var(--font-mono);
+}
+
+.gmp-member-shortid {
+  font-size: 9px;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.gmp-member-role {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.gmp-role-owner    { border-color: rgba(0,229,255,0.4); color: var(--cyan); }
+.gmp-role-co_admin { border-color: rgba(167,139,250,0.4); color: var(--purple); }
+
+.gmp-invite-section {
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gmp-invite-label {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.gmp-invite-label-spaced { margin-top: 12px; }
+
+.gmp-invite-row {
+  display: flex;
+  gap: 6px;
+}
+
+.gmp-invite-input {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 7px 10px;
+  outline: none;
+  text-transform: uppercase;
+}
+.gmp-invite-input:focus { border-color: var(--cyan-dim); }
+.gmp-invite-input:disabled { opacity: 0.5; }
+
+.gmp-invite-btn {
+  background: transparent;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 7px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.gmp-invite-btn:hover:not(:disabled) { background: rgba(0,229,255,0.07); }
+.gmp-invite-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.gmp-link-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 8px 10px;
+  cursor: pointer;
+  text-align: left;
+}
+.gmp-link-btn:hover:not(:disabled) { border-color: var(--cyan-dim); color: var(--text-primary); }
+.gmp-link-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.gmp-link-result {
+  display: flex;
+  gap: 6px;
+}
+
+.gmp-link-value {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 7px 8px;
+  outline: none;
+}
+
+.gmp-invite-msg {
+  font-size: 11px;
+  margin: 2px 0 0;
+}
+.gmp-invite-msg.ok  { color: var(--green); }
+.gmp-invite-msg.err { color: var(--red); }
+
+/* ── Danger zone (Delete Group) ────────────────────────── */
+.gmp-danger-section {
+  border-top: 1px solid rgba(239, 68, 68, 0.2);
+  margin-top: 18px;
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gmp-invite-label-danger { color: rgba(239, 68, 68, 0.7); }
+
+.gmp-delete-group-btn {
+  background: none;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+.gmp-delete-group-btn:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+}
+.gmp-delete-group-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.gmp-leave-group-btn {
+  background: none;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.gmp-leave-group-btn:hover:not(:disabled) {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: var(--amber);
+  color: var(--amber);
+}
+.gmp-leave-group-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (max-width: 480px) {
+  .gmp-panel { width: 100%; max-width: 100%; }
+}

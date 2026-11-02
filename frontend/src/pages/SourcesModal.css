@@ -1,0 +1,175 @@
+.srm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  background: rgba(4, 8, 12, 0.78);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fade-in 0.15s ease;
+}
+
+.srm-panel {
+  width: min(920px, 92vw);
+  max-height: 84vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 229, 255, 0.04);
+  overflow: hidden;
+}
+
+.srm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  position: relative;
+}
+/* Subtle accent line under the header — small polish touch consistent
+   with the cyan accent used throughout the rest of the app. */
+.srm-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan) 0%, transparent 60%);
+  opacity: 0.35;
+}
+
+.srm-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.srm-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.srm-close-btn:hover { color: var(--text-primary); }
+
+.srm-grid {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  gap: 18px;
+}
+
+.srm-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(0, 229, 255, 0.025);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 18px 16px;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.srm-card:hover {
+  border-color: var(--cyan-dim);
+  background: rgba(0, 229, 255, 0.05);
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.08), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Index badge — a small filled circle with just the number, not a
+   literal "[1]" bracket — reads more like a footnote/citation marker
+   than raw technical notation. */
+.srm-card-index {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+}
+
+.srm-card-headline {
+  margin: 0;
+  padding-right: 26px;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.42;
+  color: var(--text-primary);
+}
+
+.srm-card-snippet-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.srm-card-snippet {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Fades the last line into the card background instead of a hard cut —
+   reads as an intentional truncation rather than clipped-off text. */
+.srm-card-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background: linear-gradient(to bottom, transparent, rgba(8, 13, 18, 0.65));
+  pointer-events: none;
+}
+
+.srm-card-btn {
+  align-self: flex-start;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid var(--cyan-dim);
+  border-radius: 6px;
+  padding: 7px 14px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+.srm-card-btn:hover {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: var(--cyan);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .srm-grid { grid-template-columns: 1fr; padding: 16px; gap: 12px; }
+  .srm-panel { max-height: 88vh; border-radius: 0; }
+}

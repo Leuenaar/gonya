@@ -1,0 +1,54 @@
+.boot-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: var(--bg-base);
+  animation: fade-in 0.4s ease;
+}
+
+.boot-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ── Custom checkbox (global) ───────────────────────────── */
+input[type="checkbox"] {
+  appearance:         none;
+  -webkit-appearance: none;
+  width:              14px;
+  height:             14px;
+  border:             1px solid var(--border-strong);
+  background:         var(--bg-surface);
+  position:           relative;
+  flex-shrink:        0;
+  transition:         border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  top:                1px;
+}
+
+input[type="checkbox"]:checked {
+  border-color: var(--cyan);
+  background:   rgba(0,229,255,0.08);
+}
+
+input[type="checkbox"]:checked::after {
+  content:     '';
+  position:    absolute;
+  left:        3px;
+  top:         0px;
+  width:       5px;
+  height:      9px;
+  border:      1.5px solid var(--cyan);
+  border-top:  none;
+  border-left: none;
+  transform:   rotate(45deg);
+}
+
+input[type="checkbox"]:focus-visible {
+  outline:    none;
+  box-shadow: 0 0 0 2px rgba(0,229,255,0.2);
+}

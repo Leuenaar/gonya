@@ -1,0 +1,73 @@
+.shell-root {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-base);
+  animation: fade-in 0.3s ease;
+}
+
+.shell-panel {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-strong);
+  padding: 40px 48px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+}
+
+.shell-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--cyan);
+  border-style: solid;
+  opacity: 0.5;
+}
+.shell-tl { top: -1px; left: -1px; border-width: 1.5px 0 0 1.5px; }
+.shell-tr { top: -1px; right: -1px; border-width: 1.5px 1.5px 0 0; }
+.shell-bl { bottom: -1px; left: -1px; border-width: 0 0 1.5px 1.5px; }
+.shell-br { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
+
+.shell-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--cyan);
+  opacity: 0.55;
+  margin-bottom: 10px;
+}
+
+.shell-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.shell-body {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.shell-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.shell-btn {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  padding: 8px 20px;
+  transition: all 0.15s;
+}
+.shell-btn:hover { border-color: var(--red); color: var(--red); }
